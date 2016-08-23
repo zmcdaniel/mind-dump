@@ -1,0 +1,13 @@
+body {
+  background-color: #f5f5f5;
+  color: #ff4500;
+}
+
+p {
+  font-family: 'Source Code Pro';
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 800;
+}
