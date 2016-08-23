@@ -37,16 +37,17 @@ app.get('/', function(req, res) {
 
 // Main page after logging in
 app.get('/main', isLoggedIn, function(req, res) {
-  res.render('user/main');
+  res.render('main');
 });
 
 app.post('/main', isLoggedIn, function(req, res) {
+  console.log(req.content);
   res.send('POST from main.');
 });
 
 // Writing archive page
 app.get('/archive', isLoggedIn, function(req, res) {
-  res.render('user/archive');
+  res.render('archive');
 });
 
 // Show writing from particular date
@@ -56,12 +57,12 @@ app.get('/archive/:id', isLoggedIn, function(req, res) {
 
 // About page. Misc info and FAQ
 app.get('/about', isLoggedIn, function(req, res) {
-  res.render('user/about');
+  res.render('about');
 });
 
 // Settings page. Change your email, password, name.
 app.get('/settings', isLoggedIn, function(req, res) {
-  res.render('user/settings');
+  res.render('settings');
 });
 
 // POST changes to email, password, or name
@@ -69,7 +70,6 @@ app.post('settings', isLoggedIn, function(req, res){
   res.send('POST from settings');
 });
 
-// Login/sign up routes in auth controller
 app.use('/auth', require('./controllers/auth'));
 
 var server = app.listen(process.env.PORT || 3000);

@@ -19,7 +19,7 @@ router.post('/signup', function(req, res) {
   }).spread(function(user, created) {
     if(created) {
       passport.authenticate('local', {
-        successRedirect: './main',
+        successRedirect: '/main',
         successFlash: 'Account created and logged in'
       })(req, res);
     } else {
@@ -37,10 +37,10 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '../main',
+  successRedirect: '/main',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username and/or password',
-  successFlash: 'You\'re in!'
+  successFlash: 'You logged in'
 }));
 
 router.get('/logout', function(req, res) {
