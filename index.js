@@ -82,11 +82,13 @@ app.get('/user/about', isLoggedIn, function(req, res) {
 });
 
 // Settings page. Change your email, password, name.
+// Work on this last
 app.get('/user/settings', isLoggedIn, function(req, res) {
   res.render('user/settings');
 });
 
 // POST changes to email, password, or name
+// Work on this last
 app.post('/user/settings', isLoggedIn, function(req, res){
 //   res.send('POST from settings');
 });

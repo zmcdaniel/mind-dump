@@ -25,6 +25,7 @@
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.1",
     "connect-flash": "^0.1.1",
+    "countable": "^2.1.1",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
     "express-ejs-layouts": "^2.1.0",
