@@ -60,7 +60,12 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
-  res.send('Saved');
+  var postContent = req.body.content;
+  if (postContent.length > 5) {
+    res.send(postContent);
+  } else {
+    res.send('Must be longer than 5 characters');
+  }
 });
 
 // Writing archive page

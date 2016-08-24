@@ -5,30 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mind Dump</title>
 
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- My awesome CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+    <% include ../partials/css_styling.ejs %>
   </head>
   <body>
     <div class="container">
       <p><strong><%- JSON.stringify(currentUser) %></strong></p>
 
+
       <% if(alerts.error) { %>
         <% alerts.error.forEach(function(msg) { %>
-          <div class="alert alert-danger"><%= msg %></div>
+          <div class="alert alert-danger" id='alertmsg'><%= msg %></div>
         <% }); %>
       <% } %>
 
       <% if(alerts.success) { %>
         <% alerts.success.forEach(function(msg) { %>
-          <div class="alert alert-success"><%= msg %></div>
+          <div class="alert alert-success" id='alertmsg'><%= msg %></div>
         <% }); %>
       <% } %>
 
+
+
       <h1>Mind Dump</h1>
+
+
       <%- body %>
+
+
+
+
+
     </div>
 
     <script src="//code.jquery.com/jquery.js"></script>
