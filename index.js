@@ -63,7 +63,17 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
-  // db.user.findOne({ where: {id: req.body.})
+  if (req.body.content.length < 10) {
+    res.send('You have to write more than that!');
+  } else {
+    db.user_post.create({content: req.body.content}).then(function(content){
+      if(content) {
+        res.send('created post successfully');
+      } else {
+        res.send('fail');
+      }
+    });
+  }
 });
 
 // Writing archive page
