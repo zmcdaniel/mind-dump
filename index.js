@@ -5,11 +5,13 @@ var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var info = require('session-info');
 var passport = require('./config/ppConfig');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 
 var app = express();
+var db = require('./models');
 
 // ============
 // SET/USE STATMENTS
@@ -24,12 +26,13 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 
-// Sessions
+// Sessions and session info
 app.use(session({
   secret: process.env.SESSION_SECRET || 'abcdefghijklmnopqrstuvwxyz',
   resave: false,
   saveUninitialized: true
 }));
+app.use(info());
 
 // Flash messages
 app.use(flash());
@@ -50,7 +53,7 @@ app.use(function(req, res, next) {
 
 // Landing page
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('home/index');
 });
 
 // Main page after logging in
@@ -60,12 +63,7 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
-  var postContent = req.body.content;
-  if (postContent.length > 5) {
-    res.send(postContent);
-  } else {
-    res.send('Must be longer than 5 characters');
-  }
+  // db.user.findOne({ where: {id: req.body.})
 });
 
 // Writing archive page
@@ -88,13 +86,25 @@ app.get('/user/settings', isLoggedIn, function(req, res) {
   res.render('user/settings');
 });
 
-// // POST changes to email, password, or name
-// app.post('/user/settings', isLoggedIn, function(req, res){
+// POST changes to email, password, or name
+app.post('/user/settings', isLoggedIn, function(req, res){
 //   res.send('POST from settings');
-// });
+});
 
-// Auth controller
+
+
+// ============
+// CONTROLLERS
+// ============
+
 app.use('/auth', require('./controllers/auth'));
+//app.use('/user', require('./controllers/user'));
+
+
+
+// ============
+// LISTENERS
+// ============
 
 var server = app.listen(process.env.PORT || 3000);
 

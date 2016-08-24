@@ -2,4 +2,104 @@
 
 <h2>Settings</h2>
 
-<p>change your email, name, password</p>
+<p>Change your email</p>
+
+<div class='well'>
+  <form action="/user/settings" method="POST" id='change-email'>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'> 
+        <label for="currentEmail">Current email</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="currentEmail" class="form-control" type="email" name="currentEmail" placeholder='<%- JSON.stringify(currentUser.email) %>'>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'>
+        <label for="newEmail">New email</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="newEmail" class="form-control" type="email" name="newEmail">
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit">
+  </form>
+</div>
+
+<hr>
+
+<p>Change your password</p>
+
+<div class='well'>
+  <form action="/user/settings" method="POST" id='change-password'>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'>
+        <label for="oldPassword">Current Password</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="oldPassword" class="form-control" type="password" name="oldPassword" placeholder='•••••••••'>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'>
+        <label for="newPassword">New Password</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="newPassword" class="form-control" type="password" name="newPassword">
+      </div>
+
+    </div>
+
+    <input class="btn btn-primary" type="submit">
+  </form>
+</div>
+
+<hr>
+
+<p>Change your name</p>
+
+<div class='well'>
+  <form action="/user/settings" method="POST" id=changeFirstName>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'>
+        <label for="oldFirstName">Current First Name</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="oldFirstName" class="form-control" type="text" name="oldFirstName" placeholder='x'>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class='col-sm-2'>
+        <label for="newFirstName">New First Name</label>
+      </div>
+
+      <div class='col-sm-10'>
+        <input id="newFirstName" class="form-control" type="text" name="newFirstName">
+      </div>
+      
+    </div>
+
+    <input class="btn btn-primary" type="submit">
+  </form>
+</div>

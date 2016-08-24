@@ -1,13 +1,58 @@
 body {
   background-color: #f5f5f5;
   color: #ff4500;
-}
-
-p {
   font-family: 'Source Code Pro';
 }
 
-h1 {
-  font-size: 50px;
-  font-weight: 800;
+p {
+  font-size: 18px;
 }
+
+h1 {
+  font-size: 5em;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: sans-serif;
+}
+
+.btn {
+  border: 5px solid #ff4500;
+  border-radius: 0px;
+  background-color: #ff4500;
+  font-family: 'Source Code Pro';
+}
+
+.btn:hover {
+  border: 5px solid #ff4500;
+  border-radius: 0px;
+  background-color: #f5f5f5;
+  color: #ff4500;
+  font-family: 'Source Code Pro';
+}
+
+/* Styles for landing page */
+
+#landingDesc {
+  margin-top: 1em
+  margin-bottom: 1em;
+  padding: 10em;
+}
+
+#landingBtns {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Styles for footer */
+
+#footertext {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 20px;
+  color: #d5d5d5;
+}
+
+/* Styles for the navbar*/
+
