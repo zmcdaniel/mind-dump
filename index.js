@@ -10,8 +10,19 @@ var passport = require('./config/ppConfig');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 
+// Watson API stuff
+var user = '2d0af124-815c-4051-b1a9-2c5f26ad81b0';
+var pass = 'W8P4PxZyiIwm';
+var tone_analyzer = watson.tone_analyzer({
+  username: user,
+  password: pass,
+  version: 'v3',
+  version_date: '2016-05-19'
+});
+
 var app = express();
 var db = require('./models');
+
 
 // ============
 // SET/USE STATMENTS
@@ -90,7 +101,7 @@ app.get('/user/archive/:id', isLoggedIn, function(req, res) {
     res.render('user/show', { post: singlePost });
   })
   .catch(function(error) {
-    res.status(400).send('404');
+    res.status(400).send('Something went wrong! Not found!');
   });
 });
 
