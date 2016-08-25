@@ -63,17 +63,11 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
-  if (req.body.content.length < 10) {
-    res.send('You have to write more than that!');
-  } else {
-    db.user_post.create({content: req.body.content}).then(function(content){
-      if(content) {
-        res.send('created post successfully');
-      } else {
-        res.send('fail');
-      }
+  db.post.create({
+      content: req.body.content
+    }).then(function(post) {
+      res.redirect('/user/archive');
     });
-  }
 });
 
 // Writing archive page
@@ -83,7 +77,16 @@ app.get('/user/archive', isLoggedIn, function(req, res) {
 
 // Show writing from particular date
 app.get('/user/archive/:id', isLoggedIn, function(req, res) {
-  res.render('user/archive/:id');
+  db.post.find({
+    where: { id: req.params.id }
+  })
+  .then(function(post) {
+    if (!post) throw Error();
+    res.render('user/show', { post: content });
+  })
+  .catch(function(error) {
+    res.status(400).send('404');
+  });
 });
 
 // About page. Misc info and FAQ

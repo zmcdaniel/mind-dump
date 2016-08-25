@@ -50,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
 
     classMethods: {
       associate: function(models) {
-        models.user.hasMany(models.user_post);
+        models.user.hasMany(models.post);
       }
     },
 
