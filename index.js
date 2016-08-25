@@ -82,15 +82,11 @@ app.get('/user/archive', isLoggedIn, function(req, res) {
 
 // Show writing from particular date
 app.get('/user/archive/:id', isLoggedIn, function(req, res) {
-  console.log("Request ID is HERE ZAOIES: " + req.params.id);
   db.post.findOne({
     where: { id: req.params.id },
     attributes: ['id', 'content', 'createdAt']
   })
   .then(function(singlePost) {
-    //if (!singlePost) throw Error(); // probably unnecessary
-    console.log("Here is the single post: ");
-    console.log(singlePost);
     res.render('user/show', { post: singlePost });
   })
   .catch(function(error) {
