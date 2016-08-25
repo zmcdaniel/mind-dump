@@ -63,6 +63,10 @@ module.exports = function(sequelize, DataTypes) {
         var jsonUser = this.get();
         delete jsonUser.password;
         return jsonUser;
+      }, 
+
+      getFullName: function() {
+        return this.first_name + ' ' + this.last_name;
       }
     }
   });

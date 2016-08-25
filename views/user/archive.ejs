@@ -2,18 +2,21 @@
 
 <h2>Your writing archive</h2>
 
-<div class='well'>
+<div id='well'>
+  <% posts.forEach(function(post){ %>
+      <h3>
+          <%= post.createdAt %>
+      </h3>
 
-<p>All the saved writing stuff and junk</p>
+      <p>
+        <%= post.content.substr(0, 200) %>
+        <a href='/user/archive/<%=post.id%>'>
+          <small> read more &xrarr; </small>
+        </a>
 
-<% posts.forEach(function(project) { %>
-  <div class="well">
-    <h2>
-      <%= post.id %>">
-    </h2>
-  </div>
-<% }); %>
+      </p>
 
-
+      <hr>
+  <% }); %>
 </div>
 

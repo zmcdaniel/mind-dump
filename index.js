@@ -61,28 +61,37 @@ app.get('/user/main', isLoggedIn, function(req, res) {
   res.render('user/main');
 });
 
+
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
   db.post.create({
       content: req.body.content
-    }).then(function(post) {
-      res.redirect('/user/archive');
+    }).then(function(post) { 
+      res.redirect('/user/archive'); 
     });
 });
 
 // Writing archive page
 app.get('/user/archive', isLoggedIn, function(req, res) {
-  res.render('user/archive');
+  db.post.findAll({
+    attributes: ['id', 'content', 'createdAt']
+  }).then(function(allPosts) {
+    res.render('user/archive', { posts: allPosts });
+  });
 });
 
 // Show writing from particular date
 app.get('/user/archive/:id', isLoggedIn, function(req, res) {
-  db.post.find({
-    where: { id: req.params.id }
+  console.log("Request ID is HERE ZAOIES: " + req.params.id);
+  db.post.findOne({
+    where: { id: req.params.id },
+    attributes: ['id', 'content', 'createdAt']
   })
-  .then(function(post) {
-    if (!post) throw Error();
-    res.render('user/show', { post: content });
+  .then(function(singlePost) {
+    //if (!singlePost) throw Error(); // probably unnecessary
+    console.log("Here is the single post: ");
+    console.log(singlePost);
+    res.render('user/show', { post: singlePost });
   })
   .catch(function(error) {
     res.status(400).send('404');
