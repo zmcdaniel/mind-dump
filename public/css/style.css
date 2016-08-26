@@ -6,7 +6,7 @@ body {
   background-repeat: repeat;
 }
 
-p {
+p, ul, li {
   font-size: 18px;
 }
 
@@ -16,6 +16,11 @@ h1 {
   line-height: 1.1;
   margin-top: 1em;
   margin-bottom: 1em;
+  font-family: 'Franklin Gothic', monospace;
+}
+
+h2 {
+  font-size: 3em;
   font-family: sans-serif;
 }
 
@@ -58,3 +63,11 @@ h1 {
 
 /* Styles for the navbar*/
 
+/* Style for the About page */
+
+
+#aboutDesc {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 5em;
+}

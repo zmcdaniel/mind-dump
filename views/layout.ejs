@@ -9,20 +9,32 @@
   </head>
   <body>
     <div class="container">
-      <p><strong><%- JSON.stringify(currentUser) %></strong></p>
+<!--       <p><strong><%- JSON.stringify(currentUser) %></strong></p> -->
 
 
-      <% if(alerts.error) { %>
-        <% alerts.error.forEach(function(msg) { %>
-          <div class="alert alert-danger" id='alertmsg'><%= msg %></div>
-        <% }); %>
-      <% } %>
-
-      <% if(alerts.success) { %>
-        <% alerts.success.forEach(function(msg) { %>
-          <div class="alert alert-success" id='alertmsg'><%= msg %></div>
-        <% }); %>
-      <% } %>
+    <% if(currentUser) { %>
+      <div class="container">
+        <p><strong>
+        <% if(parseInt(Date().substr(16,2), 10) <= 12) { %>
+          Good morning, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+        <% } else if(parseInt(Date().substr(16,2), 10) <= 18) { %>
+          Good afternoon, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+        <% } else { %>
+          Good evening, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+        <% } %>
+        <br>
+        Today is <%- Date().substr(0,3) %>. <%- Date().substr(3,4) %>. <%- Date().substr(7,3) %>th
+        <% if(alerts.error) { %>
+          <% alerts.error.forEach(function(msg) { %>
+            <div class="alert alert-danger"><%= msg %></div>
+          <% }); %>
+        <% } %>
+        <% if(alerts.success) { %>
+          <% alerts.success.forEach(function(msg) { %>
+            <div class="alert alert-success"><%= msg %></div>
+          <% }); %>
+        <% } %>
+    <% } %>
 
 
 

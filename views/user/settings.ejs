@@ -14,7 +14,7 @@
       </div>
 
       <div class='col-sm-10'>
-        <input id="currentEmail" class="form-control" type="email" name="currentEmail" placeholder='<%- JSON.stringify(currentUser.email) %>'>
+        <input id="currentEmail" class="form-control" type="email" name="currentEmail" placeholder='<%- JSON.stringify(currentUser.email).replace(/\"/g, "") %>'>
       </div>
 
     </div>
@@ -83,7 +83,7 @@
       </div>
 
       <div class='col-sm-10'>
-        <input id="oldFirstName" class="form-control" type="text" name="oldFirstName" placeholder='<%- JSON.stringify(currentUser.first_name) %>'>
+        <input id="oldFirstName" class="form-control" type="text" name="oldFirstName" placeholder='<%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>'>
       </div>
 
     </div>
@@ -118,7 +118,7 @@
       </div>
 
       <div class='col-sm-10'>
-        <input id="oldLastName" class="form-control" type="text" name="oldLastName" placeholder='<%- JSON.stringify(currentUser.last_name) %>'>
+        <input id="oldLastName" class="form-control" type="text" name="oldLastName" placeholder='<%- JSON.stringify(currentUser.last_name).replace(/\"/g, "") %>'>
       </div>
 
     </div>
