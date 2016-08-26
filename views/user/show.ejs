@@ -11,10 +11,80 @@
 
 <h2>Metadata</h2>
 
-tone_analyzer.tone({ text: 'A word is dead when it is said, some say. Emily Dickinson' },
-    function(err, tone) {
-      if (err)
-        console.log(err);
-      else
-        console.log(JSON.stringify(tone, null, 2));
-    });
+<div class='col-md-4'>
+  <h3>Emotions</h3>
+
+    <ul id='metadata-emotions'>
+      
+      <li>
+        Anger: <%= emotional_tones[0].score %>
+      </li>
+
+      <li>
+        Disgust <%= emotional_tones[1].score %>
+      </li>
+
+      <li>
+        Fear <%= emotional_tones[2].score %>
+      </li>
+
+      <li>
+        Joy <%= emotional_tones[3].score %>
+      </li>
+
+      <li>
+        Sadness <%= emotional_tones[4].score %>
+      </li>
+
+    </ul>
+</div>
+
+
+<div class='col-md-4'>
+  <h3>Language Style</h3>
+
+    <ul id='metadata-emotions'>
+
+      <li>
+        Analytical <%= language_tones[0].score %>
+      </li>
+
+      <li>
+        Confident <%= language_tones[1].score %>
+      </li>
+
+      <li>
+        Tentative <%= language_tones[2].score %>
+      </li>
+
+    </ul>
+</div>
+
+<div class='col-md-4'>
+  <h3>Social Tendencies</h3>
+
+    <ul id='metadata-emotions'>
+
+      <li>
+        Openness <%= social_tones[0].score %>
+      </li>
+
+      <li>
+        Conscientiousness <%= social_tones[1].score %>
+      </li>
+
+      <li>
+        Extraversion <%= social_tones[2].score %>
+      </li>
+
+      <li>
+        Agreeableness <%= social_tones[3].score %>
+      </li>
+
+      <li>
+        Emotional Range <%= social_tones[4].score %>
+      </li>
+
+    </ul>
+</div>
+

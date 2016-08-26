@@ -9,6 +9,7 @@ var info = require('session-info');
 var passport = require('./config/ppConfig');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
+var watson = require('watson-developer-cloud');
 
 // Watson API stuff
 var user = '2d0af124-815c-4051-b1a9-2c5f26ad81b0';
@@ -98,10 +99,26 @@ app.get('/user/archive/:id', isLoggedIn, function(req, res) {
     attributes: ['id', 'content', 'createdAt']
   })
   .then(function(singlePost) {
-    res.render('user/show', { post: singlePost });
+    var toneJson = '';
+    tone_analyzer.tone({ text: singlePost.content },
+      function(err, tone) {
+        if (err) {
+          console.log(err);
+        } else {
+          eTones = tone.document_tone.tone_categories[0].tones; // emotional tones
+          lTones = tone.document_tone.tone_categories[1].tones; // languages tones
+          sTones = tone.document_tone.tone_categories[2].tones; // social tones
+          res.render('user/show', { 
+            post: singlePost,
+            emotional_tones: eTones,
+            language_tones: lTones,
+            social_tones: sTones
+          });
+        }
+      });
   })
   .catch(function(error) {
-    res.status(400).send('Something went wrong! Not found!');
+    res.status(400).send('404');
   });
 });
 
