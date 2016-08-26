@@ -77,12 +77,28 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
   db.post.create({
-      content: req.body.content,
-      userid: req.body.userid
-    }).then(function(post) { 
-      res.redirect('/user/archive'); 
-    });
+    content: req.body.content,
+    userid: req.body.userid
+  }).then(function(post) { 
+    res.redirect('/user/archive'); 
+  });
 });
+
+//   console.log(req.body);
+//   db.user.findOne({where: {id: req.body.user}}).then(function(user){
+//     if(user){
+//       db.post.create({
+//         content: req.body.content,
+//         userid: req.body.userid
+//       }).then(function(post){
+//         res.redirect('/user/archive');
+//       });
+//     }
+//     else {
+//       res.send("Uh oh, didn't get added.");
+//     }
+//   })
+// });
 
 // Writing archive page
 app.get('/user/archive', isLoggedIn, function(req, res) {
