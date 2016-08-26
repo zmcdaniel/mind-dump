@@ -37,6 +37,7 @@
     "pg": "^5.0.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.23.3",
+    "sequelize-cli": "^2.4.0",
     "session-info": "0.0.5",
     "watson-developer-cloud": "^2.1.4"
   }
