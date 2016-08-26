@@ -77,7 +77,8 @@ app.get('/user/main', isLoggedIn, function(req, res) {
 // Saves the main page content.
 app.post('/user/main', isLoggedIn, function(req, res, body) {
   db.post.create({
-      content: req.body.content
+      content: req.body.content,
+      userid: req.body.userid
     }).then(function(post) { 
       res.redirect('/user/archive'); 
     });

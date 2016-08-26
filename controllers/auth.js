@@ -19,7 +19,7 @@ router.post('/signup', function(req, res) {
   }).spread(function(user, created) {
     if(created) {
       passport.authenticate('local', {
-        successRedirect: '/main',
+        successRedirect: 'user/main',
         successFlash: 'Account created and logged in'
       })(req, res);
     } else {
