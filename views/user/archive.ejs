@@ -2,12 +2,13 @@
 
 <h2>Your writing archive</h2>
 
-<div id='well'>
+<div class='well'>
   <% posts.forEach(function(post){ %>
       <h3>
           <%= post.createdAt %>
       </h3>
 
+      <div class='writing'>
       <p>
         <%= post.content.substr(0, 200) %>
         <a href='/user/archive/<%=post.id%>'>
@@ -15,6 +16,7 @@
         </a>
 
       </p>
+      </div>
 
       <hr>
   <% }); %>

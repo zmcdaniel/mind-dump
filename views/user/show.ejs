@@ -2,7 +2,7 @@
 
 <h2><%= post.createdAt %></h2>
 
-<div id='postcontent'>
+<div class='well writing' id='postcontent'>
 
 <%= post.content %>
 
@@ -10,15 +10,17 @@
 
 <h2>Metadata</h2>
 
-<div class='col-md-4'>
-  <h3>Emotions</h3>
+<div id='postmetadata'>
 
-  <canvas id="emotionsChart" width="400" height="400"></canvas>
+  <div class='well col-md-4'>
+    <h3>Emotions</h3>
+
+    <canvas id="emotionsChart" width="400" height="400"></canvas> 
 
     <ul id='metadata-emotions'>
-      
+        
       <li>
-        Anger: <%= emotional_tones[0].score %>
+        Anger <%= emotional_tones[0].score %>
       </li>
 
       <li>
@@ -38,13 +40,15 @@
       </li>
 
     </ul>
-</div>
+  </div>
 
 
-<div class='col-md-4'>
-  <h3>Language Style</h3>
+  <div class='well col-md-4'>
+    <h3>Language Style</h3>
 
-    <ul id='metadata-emotions'>
+    <canvas id="languageChart" width="400" height="400"></canvas>
+
+    <ul id='metadata-language'>
 
       <li>
         Analytical <%= language_tones[0].score %>
@@ -59,12 +63,14 @@
       </li>
 
     </ul>
-</div>
+  </div>
 
-<div class='col-md-4'>
-  <h3>Social Tendencies</h3>
+  <div class='well col-md-4'>
+    <h3>Social Tendencies</h3>
 
-    <ul id='metadata-emotions'>
+    <canvas id="socialChart" width="400" height="400"></canvas>
+    
+    <ul id='metadata-social'>
 
       <li>
         Openness <%= social_tones[0].score %>
@@ -87,6 +93,9 @@
       </li>
 
     </ul>
+  </div>
+
+</div>
 </div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js'>
