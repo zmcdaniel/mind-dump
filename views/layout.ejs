@@ -16,11 +16,11 @@
       <div class="container" id='greetingSection'>
         <p><strong>
         <% if(parseInt(Date().substr(16,2), 10) <= 12) { %>
-          Good morning, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+          Good morning, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>!
         <% } else if(parseInt(Date().substr(16,2), 10) <= 18) { %>
-          Good afternoon, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+          Good afternoon, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>!
         <% } else { %>
-          Good evening, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>
+          Good evening, <%- JSON.stringify(currentUser.first_name).replace(/\"/g, "") %>!
         <% } %>
         <br>
         Today is <%- Date().substr(0,3) %>. <%- Date().substr(3,4) %>. <%- Date().substr(7,3) %>th
